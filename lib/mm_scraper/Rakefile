@@ -1,0 +1,35 @@
+require_relative 'scraper/scraper_handler'
+require_relative 'ruby-parser/app'
+require_relative 'config/constants'
+require_relative 'db/db_mysql'
+
+namespace :app do
+  task :get_new_content, [:db, :first_parsing, :page_limit] do |t, params|
+    params.with_defaults(first_parsing: 'false', page_limit: 30)
+    WORKING_RESOURCES.each do |resource|
+      scraper = ScraperHandler.choose_scraper(resource, params[:db])
+      scraper.parse_new_content(first_scraping: params[:first_parsing].to_boolean,
+        page_limit: params[:page_limit].to_i)
+    end
+  end
+
+  task :parse_content, [:db, :first_parsing] do |t, params|
+    params.with_defaults(first_parsing: 'false')
+	  app = Application.new(params[:db])
+	  app.parse_content(first_parsing: params[:first_parsing].to_boolean)
+  end
+
+  task :update, [:db, :first_parsing, :page_limit] do |t, params|
+    params.with_defaults(first_parsing: 'false', page_limit: 30)
+    system 'rake "app:get_new_content[' +
+      "#{params[:db]},#{params[:first_parsing]},#{params[:page_limit]}" +
+      '"] && rake "app:parse_content[' +
+      "#{params[:db]},#{params[:first_parsing]}" + ']"'
+  end
+
+  task :update_publications, [:db, :resource] do |t, params|
+    app = Application.new(params[:db])
+    columns = ENV['COLUMNS'].split(',')
+    app.parse_content(resource: params[:resource], columns: columns)
+  end
+end

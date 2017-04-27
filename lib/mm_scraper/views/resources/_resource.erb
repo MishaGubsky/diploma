@@ -1,0 +1,9 @@
+<tr>
+  <td>Resource Logo</td>
+  <td><a href='<%= "/resources/#{resource_hash[:resource][:id]}"%>'><%= resource_hash[:resource][:module] %></a></td>
+  <td><a href="<%= resource_hash[:resource][:domain] %>"><%= resource_hash[:resource][:domain] %></a></td>
+  <td><%= resource_hash[:scraped_articles] %></td>
+  <td><%= resource_hash[:parsed_articles] %></td>
+  <td class="td-actions"><button>start new scraping</button></td>
+  <td class="td-actions"><button>start new parsing</button></td>
+</tr>

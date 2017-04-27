@@ -1,0 +1,163 @@
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js'></script>
+<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+<style>
+    .chart {
+        width: 49.99999%;
+        height: 350px;
+        float: left;
+        margin-bottom: 20px;
+    }
+    .title {
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 22px;
+        padding-bottom: 40px;
+        padding-top: 20px;
+    }
+    .icon_anlts {
+        width: 30px;
+        height: 30px;
+    }
+    .title_post{
+        width: 600px;
+        margin: 0 auto;
+        padding-top: 10px;
+        padding-bottom: 30px;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        color: #6f6f6f;
+        border-bottom: 1px solid #6f6f6f;
+        line-height: 32px;
+    }
+    .text_post {
+        color: #0f0f0f;
+        width: 80%;
+        margin: 20 auto;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .auther_and_date_post {
+        color: #6f6f6f;
+        width: 600px;
+        text-align: center;
+        border-bottom: 1px solid #6f6f6f;
+        padding-bottom: 30px;
+        padding-top: 30px;
+        margin: 0 auto;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    }
+    .category_post {
+        color: #6f6f6f;
+        width: 80%;
+        margin: 20 auto;
+        padding-top: 30px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .tags_post {
+        color: #6f6f6f;
+        width: 80%;
+        margin: 20 auto;
+        padding-top: 30px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+</style>
+
+
+<div class="box">
+    <div class='title_post'><%= @article[:title]%></div>
+    <div class="auther_and_date_post"> <%= "#{@article[:authors_text]}; #{@article[:posted_at]}" %></div>
+    <div class='text_post'><%= @article[:content] %></div>
+    <div class="category_post"><%= @article[:category_text] %></div>
+    <div class="tags_post"><%= @article[:keywords_text] %></div>
+
+    <div class='title'>
+        <div class="icon_anlts">
+            <img src="http://www.cognique.co.uk/wp-content/uploads/Google-Analytics-help-cta-icon.png" style="position:absolute; left:20px; width: 30px; height: 30px;">
+            <div style='position: absolute; margin-left: 55px;'>Post Dynamic Stat</div>
+        </div>
+
+    </div>
+    <div class='charts'>
+        <div class='chart'>
+            <canvas id="lcr" ></canvas>
+        </div>
+        <div class='chart'>
+            <canvas id="image_count" ></canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+// $.ajax({
+//     url: '/ajax/example.html',
+//     type: 'GET',
+//     success: function (data, textStatus) {
+  var ctx = document.getElementById("lcr");
+  var ctx_image_count = document.getElementById("image_count");
+  var lcr = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: ["10.01.17", "11.01.17", "12.01.17", "13.01.17", "14.01.17", "15.01.17"],
+          datasets: [{
+              label: 'likes',
+              fill: false,
+              data: [12, 19, 34, 45, 102, 223],
+              pointHoverRadius: 15,
+              pointRadius: 5,
+              borderColor: "rgba(75,192,192,1)",
+          },
+          {
+              label: 'comments',
+              fill: false,
+              data: [3, 8, 8, null, 14, 15],
+              pointHoverRadius: 15,
+              pointRadius: 5,
+              borderColor: "rgba(175,60,130,1)",
+          },
+          {
+              label: 'reports',
+              fill: false,
+              data: [3, 4, null, 14, 22, 23],
+              pointHoverRadius: 15,
+              pointRadius: 5,
+              borderColor: "rgba(0,60,130,1)",
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+      }
+  });
+  var image_count = new Chart(ctx_image_count, {
+      type: 'bar',
+      data: {
+          labels: ["image_count", 'video_count', 'link_count'],
+          datasets: [{
+              label: "My First dataset",
+              data: [13, 22, 10],
+              backgroundColor: ["rgba(0,12,102,0.4)","rgba(175,102,0,0.4)","rgba(33,33,33,0.4)"],
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+      }
+  });
+//     },
+//     error: function(err) {
+//         console.log(err);
+//     }
+// });
+</script>

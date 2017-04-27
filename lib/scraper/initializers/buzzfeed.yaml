@@ -1,0 +1,70 @@
+url: https://www.buzzfeed.com
+keywords:
+  - .lede h2 a.lede__link
+  - a.link-gray:not(.col)
+  - article hgroup h2 a
+  - a.trending-post-title
+  - li.post h2 a
+  - li.small-posts a
+main_api:
+  - /index/paging?p=###&r=1
+  - /api/v2/feeds/index?p=###
+pattern_url: ^(\/[\w-]+){2}
+metrics_for_configs:
+  - views
+  - comments
+  - likes
+  - dislikes
+  - lol
+  - win
+  - fail
+  - omg
+  - cute
+  - wtf
+  - yaaass
+  - ew
+  - ahhhhh
+  - facebook_comments
+  - facebook_reposts
+urls_with_pagination:
+  - https://www.buzzfeed.com/plugin/midcolumn/v:1.1/p:###
+  - https://www.buzzfeed.com/index?p=###
+  - https://www.buzzfeed.com/lol?p=###
+  - https://www.buzzfeed.com/win?p=###
+  - https://www.buzzfeed.com/omg?p=###
+  - https://www.buzzfeed.com/cute?p=###
+  - https://www.buzzfeed.com/fail?p=###
+  - https://www.buzzfeed.com/wtf?p=###
+  - https://www.buzzfeed.com/news?p=###
+  - https://www.buzzfeed.com/world?p=###
+  - https://www.buzzfeed.com/quizzes?p=###
+  - https://www.buzzfeed.com/tasty?p=###
+  - https://www.buzzfeed.com/community?p=###
+  - https://www.buzzfeed.com/animals?p=###
+  - https://www.buzzfeed.com/audio?p=###
+  - https://www.buzzfeed.com/bigstories?p=###
+  - https://www.buzzfeed.com/books?p=###
+  - https://www.buzzfeed.com/business?p=###
+  - https://www.buzzfeed.com/buzz?p=###
+  - https://www.buzzfeed.com/celebrity?p=###
+  - https://www.buzzfeed.com/entertaiment?p=###
+  - https://www.buzzfeed.com/food?p=###
+  - https://www.buzzfeed.com/geeky?p=###
+  - https://www.buzzfeed.com/lgbt?p=###
+  - https://www.buzzfeed.com/health?p=###
+  - https://www.buzzfeed.com/life?p=###
+  - https://www.buzzfeed.com/music?p=###
+  - https://www.buzzfeed.com/parents?p=###
+  - https://www.buzzfeed.com/podcasts?p=###
+  - https://www.buzzfeed.com/politics?p=###
+  - https://www.buzzfeed.com/puzzles?p=###
+  - https://www.buzzfeed.com/reader?p=###
+  - https://www.buzzfeed.com/rewind?p=###
+  - https://www.buzzfeed.com/science?p=###
+  - https://www.buzzfeed.com/sports?p=###
+  - https://www.buzzfeed.com/style?p=###
+  - https://www.buzzfeed.com/tech?p=###
+  - https://www.buzzfeed.com/travel?p=###
+  - https://www.buzzfeed.com/weddings?p=###
+  - https://www.buzzfeed.com/world?p=###
+  - https://www.buzzfeed.com/weekend?p=###

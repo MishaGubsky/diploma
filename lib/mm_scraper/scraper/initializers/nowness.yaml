@@ -1,0 +1,11 @@
+api_domain: https://api.nowness.com
+keywords: slug
+main_api:
+  - /api/search?curator_role=contributor,editor,brand,member&order=date%20desc&limit=30&page=###
+pattern_url: ^\/api\/post\/getBySlug\/[\w-]+
+metrics_for_configs:
+  - views
+  - comments
+  - likes
+  - facebook_comments
+  - facebook_reposts

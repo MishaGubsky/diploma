@@ -1,0 +1,18 @@
+domain: https://techcrunch.com
+keywords:
+  - h2.post-title a
+main_api:
+  - /page/###/
+pattern_url: ^(\/[\w-]+){4}
+metrics_for_configs:
+  - facebook_comments
+  - facebook_reposts
+urls_with_pagination:
+  - https://techcrunch.com/startups/page/###
+  - https://techcrunch.com/mobile/page/###
+  - https://techcrunch.com/gadgets/page/###
+  - https://techcrunch.com/enterprise/page/###
+  - https://techcrunch.com/social/page/###
+  - https://techcrunch.com/europe/page/###
+  - https://techcrunch.com/asia/page/###
+  - https://techcrunch.com/column/page/###

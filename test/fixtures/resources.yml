@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  domain: MyString
+  module_name: MyString
+  with_api: false
+
+two:
+  domain: MyString
+  module_name: MyString
+  with_api: false

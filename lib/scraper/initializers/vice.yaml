@@ -1,0 +1,8 @@
+api_domain: https://www.vice.com
+keywords: id
+main_api:
+  - /api/v1/articles?locale=en_us&page=###&per_page=24
+pattern_url: ^\/api\/v1\/articles\/[\w-]+
+metrics_for_configs:
+  - facebook_comments
+  - facebook_reposts

@@ -1,0 +1,8 @@
+api_domain: http://www.papermag.com
+keywords: pn
+main_api:
+  - https://www.papermag.com/core/load_more_posts/data.js?pn=###&resource_id=fp&site_id=11059957
+pattern_url: ^\/res\/bootstrap\/data.js\?post_id=[\w-]+&site_id=11059957&resource_id=fp&mode=full
+metrics_for_configs:
+  - facebook_comments
+  - facebook_reposts

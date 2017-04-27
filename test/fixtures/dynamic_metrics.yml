@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  views: 1
+  comments: 1
+  likes: 1
+  shares: 1
+  impressions: 1
+
+two:
+  views: 1
+  comments: 1
+  likes: 1
+  shares: 1
+  impressions: 1

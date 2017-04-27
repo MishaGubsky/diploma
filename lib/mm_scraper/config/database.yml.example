@@ -1,0 +1,25 @@
+mysql:
+  common: &mysql_common
+    adapter: mysql2
+    max_connections: 10
+    encoding: utf8mb4
+    collation: utf8mb4_unicode_ci
+  default:
+    <<: *mysql_common
+    host: localhost
+    port: 3306
+    database:
+    user:
+    password:
+    timeout: 10000
+
+mongo:
+  common: &mongo_common
+    max_pool_size: 10
+    connect_timeout: 60
+    wait_queue_timeout: 60
+  default:
+    hosts:
+      - localhost:27017
+    database:
+    <<: *mongo_common
