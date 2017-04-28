@@ -1,0 +1,12 @@
+domain: https://www.buzzfeed.com
+keywords:
+  - .lede h2 a.lede__link
+  - a.link-gray:not(.col)
+  - article hgroup h2 a
+  - a.trending-post-title
+  - li.post h2 a
+  - li.small-posts a
+pagination_urls:
+  - https://www.buzzfeed.com/index/paging?p=###&r=1
+api_urls:
+  - http://www.buzzfeed.com/api/v2/feeds/index?p=###

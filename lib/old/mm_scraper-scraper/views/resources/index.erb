@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="assets/app.css">
+
+<div class="resources">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Resource Logo</th>
+        <th>Resource Title</th>
+        <th>Resource site</th>
+        <th>Articles scriped</th>
+        <th>Articles parsed</th>
+        <th class="th-actions" colspan="2">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @resources.each do |resource|%>
+        <%= erb :"resources/_resource", :layout => false, :locals => { resource_hash: resource} %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

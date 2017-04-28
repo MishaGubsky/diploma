@@ -1,0 +1,4 @@
+/log
+links
+*.sql
+/config/database.yml

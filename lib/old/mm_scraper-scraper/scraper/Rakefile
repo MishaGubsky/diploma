@@ -1,0 +1,11 @@
+require_relative './app/scraper_handler'
+
+task :update_content do
+  scraper = ScraperHandler.choose_scraper('buzzfeed', 'mysql')
+  scraper.update_content
+end
+
+task :scrape_content do
+  scraper = ScraperHandler.choose_scraper('buzzfeed', 'mysql')
+  scraper.parse_new_content
+end
