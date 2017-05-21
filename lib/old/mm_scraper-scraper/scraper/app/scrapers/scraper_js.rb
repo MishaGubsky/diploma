@@ -1,6 +1,6 @@
 require_relative './scraper'
 
-class JSScraper < Scraper
+class JSONScraper < Scraper
   def initialize(site_module, db)
     begin
       params = get_module_params(site_module)

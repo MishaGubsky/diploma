@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ExternalMetricTest < ActiveSupport::TestCase
+class MetricTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

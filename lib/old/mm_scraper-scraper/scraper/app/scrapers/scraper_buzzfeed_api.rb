@@ -1,7 +1,7 @@
 require_relative './scraper_js'
 require 'json'
 
-class ScraperBuzzfeedAPI < JSScraper
+class ScraperBuzzfeedAPI < JSONScraper
 
   def initialize(db)
     super('buzzfeed', db)

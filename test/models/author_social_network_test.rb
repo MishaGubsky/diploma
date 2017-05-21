@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DynamicMetricTest < ActiveSupport::TestCase
+class AuthorSocialNetworkTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
