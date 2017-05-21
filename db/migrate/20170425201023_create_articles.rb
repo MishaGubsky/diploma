@@ -7,8 +7,6 @@ class CreateArticles < ActiveRecord::Migration[5.0]
       t.text :title
       t.text :text
       t.datetime :posted_at
-      t.integer :image_count
-      t.integer :video_count
 
       t.timestamps
     end

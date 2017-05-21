@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170521094655) do
+ActiveRecord::Schema.define(version: 20170521154506) do
+
+  create_table "Articles_Authors", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "article_id", null: false
+    t.integer "author_id",  null: false
+  end
+
+  create_table "Articles_Categories", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "article_id",  null: false
+    t.integer "category_id", null: false
+  end
+
+  create_table "Articles_Keywords", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "article_id", null: false
+    t.integer "keyword_id", null: false
+  end
+
+  create_table "Articles_Tags", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "article_id", null: false
+    t.integer "tag_id",     null: false
+  end
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "last_parsing_at"
@@ -19,16 +39,20 @@ ActiveRecord::Schema.define(version: 20170521094655) do
     t.text     "title",           limit: 65535
     t.text     "text",            limit: 65535
     t.datetime "posted_at"
-    t.integer  "image_count"
-    t.integer  "video_count"
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
+    t.integer  "resource_id"
+    t.index ["resource_id"], name: "index_articles_on_resource_id", using: :btree
   end
 
   create_table "author_social_networks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "author_id"
+    t.integer  "social_network_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["author_id"], name: "index_author_social_networks_on_author_id", using: :btree
+    t.index ["social_network_id"], name: "index_author_social_networks_on_social_network_id", using: :btree
   end
 
   create_table "authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -51,26 +75,37 @@ ActiveRecord::Schema.define(version: 20170521094655) do
   end
 
   create_table "metrics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "views",       default: 0
-    t.integer  "likes",       default: 0
-    t.integer  "shares",      default: 0
-    t.integer  "comments",    default: 0
-    t.integer  "impressions", default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "views",             default: 0
+    t.integer  "likes",             default: 0
+    t.integer  "shares",            default: 0
+    t.integer  "comments",          default: 0
+    t.integer  "impressions",       default: 0
+    t.integer  "revision_id"
+    t.integer  "social_network_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "reposts",           default: 0
+    t.index ["revision_id"], name: "index_metrics_on_revision_id", using: :btree
+    t.index ["social_network_id"], name: "index_metrics_on_social_network_id", using: :btree
   end
 
   create_table "resources", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "domain"
+    t.string   "url"
     t.string   "module_name"
-    t.boolean  "with_api"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "with_api",    default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "revisions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "site_own_metric_id"
+    t.integer  "external_metrics_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "article_id"
+    t.index ["article_id"], name: "index_revisions_on_article_id", using: :btree
+    t.index ["external_metrics_id"], name: "index_revisions_on_external_metrics_id", using: :btree
+    t.index ["site_own_metric_id"], name: "index_revisions_on_site_own_metric_id", using: :btree
   end
 
   create_table "social_networks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -85,4 +120,6 @@ ActiveRecord::Schema.define(version: 20170521094655) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "articles", "resources"
+  add_foreign_key "revisions", "articles"
 end
