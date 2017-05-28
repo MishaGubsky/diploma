@@ -1,0 +1,2 @@
+class MongoDatabaseService
+end
