@@ -1,5 +1,6 @@
 class ResourcesController < ApplicationController
   skip_before_filter :verify_authenticity_token
+  before_action :authenticate_user!
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
 
   # GET /resources
